@@ -1,10 +1,10 @@
 import React from 'react'
-import Conuter from './Conuter'
+import Counters from './Counters'
 
 function App() {
   return (
     <div>
-      <Conuter/>
+      <Counters/>
     </div>
   )
 }
