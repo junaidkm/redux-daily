@@ -1,18 +1,46 @@
-import { useDispatch ,useSelector } from "react-redux";
-import { increment } from "./CounterSlice";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { increment } from "./counterSlice";
+import { setUser } from "./UserSlice";
 
-function Counters() {
-  const count = useSelector((state) => state.counter.count);
+function Counter() {
   const dispatch = useDispatch();
-  
-  return (
-    <>
-    <h1>{count}</h1>
 
-    <button onClick={() => dispatch(increment(1))}>
-      Increment
-    </button> 
-  </>);
+  const [name, setName] = useState("");
+  const handleclick = () => {
+    dispatch(setUser(name)) 
+    setName("")
+  } 
+  const count = useSelector((state) => state.counter.count);
+  const user = useSelector((state) => state.user.user); 
+  return (
+    <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <h1>Redux Counter</h1>
+
+      <h2>Count: {count}</h2>
+
+      <button onClick={() => dispatch(increment())}>
+        Increment +
+      </button>
+
+      <br /><br />
+
+      <input
+        type="text"
+        placeholder="Enter user value"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+
+      <br /><br />
+
+      <button onClick={handleclick}>
+        Set User
+      </button>
+
+      <h3>User: {user}</h3>
+    </div>
+  );
 }
 
-export default Counters
+export default Counter;
