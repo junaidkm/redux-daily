@@ -33,7 +33,7 @@ function Counter() {
       <br /><br />
 
       <button onClick={handleclick}>
-        Set UseRRRRRRRR
+        Set UseRRRRRRR
       </button>
 
       <h3>User: {user}</h3>
